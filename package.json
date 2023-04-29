@@ -3,12 +3,21 @@
 	"version": "0.0.1",
 	"description": "react's useState with buffer for previous values",
 	"main": "index.js",
-	"repository": "https://github.com/rishabharoraa/react-use-replay-subject",
-	"author": "rishabharoraa",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/rishabharoraa/react-use-replay-subject"
+	},
+	"author": "Rishabh Arora",
+	"keywords": [
+		"react",
+		"hook"
+	],
 	"license": "MIT",
 	"private": false,
 	"devDependencies": {
+		"@types/lodash": "^4.14.194",
 		"@types/react": "^18.2.0",
+		"lodash": "^4.17.21",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"typescript": "^5.0.4"
