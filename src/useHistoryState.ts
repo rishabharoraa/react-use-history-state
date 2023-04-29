@@ -29,7 +29,7 @@ export default function useHistoryState<T>(
             newBufferQueue.pop();
         }
         setBufferQueue(() => newBufferQueue);
-        setCurrentValue(() => newValue);
+        setCurrentValue(newValue);
     }
 
     return [currentValue, bufferQueue, setValue];
