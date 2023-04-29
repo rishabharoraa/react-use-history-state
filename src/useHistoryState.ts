@@ -1,10 +1,16 @@
-import { useEffect, useState } from 'react';
+import {
+    Dispatch,
+    SetStateAction,
+    useCallback,
+    useEffect,
+    useState,
+} from 'react';
 
 export default function useHistoryState<T>(
     bufferSize: number,
     windowTime?: number,
     initialValue?: T,
-) {
+): [T, Dispatch<SetStateAction<T>>, Array<T>] {
     const [bufferQueue, setBufferQueue] = useState<Array<T>>([]);
 
     const [currentValue, setCurrentValue] = useState<T>(initialValue);
@@ -22,15 +28,22 @@ export default function useHistoryState<T>(
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    function setValue(newValue: T) {
+    const setValue: Dispatch<SetStateAction<T>> = (
+        dispatch: T | ((prevState: T) => T),
+    ) => {
         const newBufferQueue = bufferQueue.slice(0);
-        newBufferQueue.unshift(newValue);
+        newBufferQueue.unshift(currentValue);
         if (newBufferQueue.length > bufferSize) {
             newBufferQueue.pop();
         }
         setBufferQueue(() => newBufferQueue);
-        setCurrentValue(newValue);
-    }
+        setCurrentValue(dispatch);
+    };
+    const memoizedSetValue = useCallback(setValue, [
+        bufferQueue,
+        bufferSize,
+        currentValue,
+    ]);
 
-    return [currentValue, bufferQueue, setValue];
+    return [currentValue, memoizedSetValue, bufferQueue];
 }
