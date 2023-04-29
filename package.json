@@ -1,6 +1,6 @@
 {
     "name": "react-use-history-state",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "react's useState with buffer for previous values",
     "main": "./dist/cjs/index.js",
     "module": "./dist/esm/index.js",
