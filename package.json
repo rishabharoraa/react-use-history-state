@@ -1,0 +1,16 @@
+{
+	"name": "react-use-replay-subject",
+	"version": "0.0.1",
+	"description": "react's useState with buffer for previous values",
+	"main": "index.js",
+	"repository": "https://github.com/rishabharoraa/react-use-replay-subject",
+	"author": "rishabharoraa",
+	"license": "MIT",
+	"private": false,
+	"devDependencies": {
+		"@types/react": "^18.2.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"typescript": "^5.0.4"
+	}
+}
